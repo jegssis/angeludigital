@@ -1,6 +1,0 @@
-const toggle=document.querySelector('.menu-toggle');const menu=document.querySelector('.nav-menu');toggle?.addEventListener('click',()=>{const open=menu.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'✕':'☰'});menu?.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{menu.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.textContent='☰'}));
-// Copy-to-clipboard fallback for visitors without a configured email application.
-document.querySelectorAll('.copy-email').forEach(button=>button.addEventListener('click',async()=>{
- const address=button.dataset.email;const status=button.parentElement.querySelector('.copy-feedback');
- try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(address);status.textContent='Email address copied.';}else{const field=document.createElement('textarea');field.value=address;field.style.position='fixed';field.style.opacity='0';document.body.appendChild(field);field.select();const copied=document.execCommand('copy');field.remove();status.textContent=copied?'Email address copied.':'Select and copy the email address above.';}}catch{status.textContent='Select and copy the email address above.';}
-}));
